@@ -1,6 +1,11 @@
 # translateDnD
 - 번역이 되지 않은 dnd계열 게임을 번역할수 있도록 하기 위한 mini project
 
+## now
+- 첫번째 베이스모델을 EleutherAI사의 polyglot-ko-1.3b모델로 선정, multilingual 모델 중 한국어 성능이 좋다고 평가되는 모델
+- llama시리즈를 고려 해봤지만 토크나이저 성능에 관한 의문이 있어 향후과제로 함
+- dnd 계열 게임에서 text를 추출할수 있는지 확인중
+
 ## road map
 - 1. polyglot 계열 모델 중 3090으로 fine-tuning(lora 포함)가능한 모델 결정(매개변수가 최대한 많은 것으로)  
 - 2. 선택된 모델로 영한 번역 llm으로 훈련(fine-tuning)
