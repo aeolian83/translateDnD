@@ -1,4 +1,4 @@
-### AL ###
+### folder ###
 /.ipynb_checkpoints
 /outputs
 /saved
@@ -6,3 +6,5 @@
 /qrola
 /results
 /train_data
+
+test.ipynb
