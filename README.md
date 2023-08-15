@@ -65,6 +65,63 @@
 - 훈련중 loss가 폭증하는 문제가 발생해 원인을 분석중
 - 모델 성능이 매우 안좋은 관계로 따로 번역 예는 비공개
 
+## 7. Model_3: aeolian83/Gugugo_for_DnD_v0.6
+- squarelike/Gugugo-koen-1.3B-V1.0 이 번역모델을 DnD계열 게임데이터로 fine-tuning한 모델
+- QLoRA기법으로 fine-tunnig
+### (1) 훈련 정보
+- GPU: RTX3090 1대
+- Epoch: 1
+- learning-rate: 3e-4
+- batch_size: 1
+- Lora r: 8
+- Lora target modules: query_key_value  
+![loss그래프](./img/gugugo_for_DnD_v0.6.png)
+
+args=transformers.TrainingArguments(
+        per_device_train_batch_size=1,
+        gradient_accumulation_steps=1,
+        fp16=True,
+        output_dir="outputs",
+        save_total_limit=5,
+        logging_steps=300,
+        report_to=["tensorboard"],
+        num_train_epochs = 3,
+        learning_rate=3e-4,
+        resume_from_checkpoint=True,
+        lr_scheduler_type= "cosine",
+
+### (2) 출력 예시(PillarsOfEternityII, 스크립트로 평가)
+```
+### 영어: The Steward informed me that a mysterious package has somehow arrived on my ship. I should speak with her to learn more.
+
+### 한글(Gugugo_for_DnD): 관리자는 나에게 신비한 물건이 내 배에 도착했다고 말했소. 그녀와 이야기를 해봐야겠소.
+
+### 한글(deepL): 스튜어드가 의문의 소포가 제 배에 도착했다고 알려주었습니다. 자세한 내용은 그녀와 이야기해봐야겠어요.
+
+### 한글(공식번역): 집사가 알려주기를, 이상한 꾸러미가 의문의 경로를 통해 내 선박에 도착했다고 한다. 집사와 대화해 정보를 얻어야겠다.
+```
+
+```
+### 영어: I've found myself in some sort of tournament, replete with spectators. I'm told that <b>Humaire</b> is the custodian of this place, and may be able to provide answers regarding the strange invitation. She is currently <b>topside,</b> watching the events.
+
+### 한글(Gugugo_for_DnD): 나는 일종의 토너먼트에 참가하게 되었고, 구경꾼들과 함께 있게 되었다. 나는 <b>Humaire</B>가 이 장소의 수호자라고 들었고, 이상한 초대에 대한 답을 제공할 수 있을 것이다. 그녀는 현재 <b>의 위치에 있다.
+
+### 한글(deepL): I've found myself in some sort of tournament, replete with spectators. I'm told that <b>Humaire</b> is the custodian of this place, and may be able to provide answers regarding the strange invitation. She is currently <b>topside,</b> watching the events.
+
+### 한글(공식번역): 관중들로 가득한 결투장에 도착하게 되었다. 이곳의 관리인인 <b>후마이리</b>로부터 이상한 초대에 대한 대답을 들을 수 있을 지도 모른다는 말을 들었다. 그녀는 현재 <b>상석</b>에서 경기를 지켜보고 있다.
+```
+
+```
+### 영어: <b>Humaire</b> told me to speak with her in the <b>Hall of Memories</b> on the <b>west side of the temple</b> beneath the arena.
+
+### 한글(Gugugo_for_DnD): <b>휴머레이트</b>가 <b>기억의 전당</b>의 <b>서쪽에 있는 <b>사원에서 그녀와 이야기하라고 했소.
+
+### 한글(deepL): <b>Humaire</b> told me to speak with her in the <b>Hall of Memories</b> on the <b>west side of the temple</b> beneath the arena.
+
+### 한글(공식번역): <b>후마이리</b>는 내게 결투장 밑의 <b>신전 서쪽</b>에 있는 <b>기억의 전당</b>으로 와 자신과 얘기를 나누라고 했다.
+```
+
+
 
 # Inform
 - llm fine-tuning에 관해 공부하면서 진행하는 mini project입니다. 
