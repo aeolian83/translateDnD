@@ -6,6 +6,8 @@
 - 발더스 게이트2에서 한영 dialog 추출 완료(tlk 파서: [[link](https://github.com/3zhang/TLK-v1-file-parser-for-Python)])
 - 추출한 데이터로 데이터셋 구축 완료
 - polyglot-ko-5.8b를 장문번역 한영 데이터베이스 squarelike/sharegpt_deepl_ko_translation로 fine-tuning 완료(결과 좋지 않음)
+- "squarelike/Gugugo-koen-1.3B-V1.0"에 발더스게이트2 영한 번역 dialog로 fine-tuning 완료(Gugugo_for_DnD_V0.6)
+- PoE2 번역 데이터 확보 완료, 데이터에셋에 추가 완료
 
 ## 2. Now
 - 번역질이 더 좋다는 발더스 게이트1 영한 dialog 수배중
