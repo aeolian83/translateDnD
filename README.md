@@ -126,6 +126,70 @@ args=transformers.TrainingArguments(
 ### 한글(공식번역): <b>후마이리</b>는 내게 결투장 밑의 <b>신전 서쪽</b>에 있는 <b>기억의 전당</b>으로 와 자신과 얘기를 나누라고 했다.
 ```
 
+## 8. Model_3: aeolian83/Gugugo_for_DnD_v0.7
+- squarelike/Gugugo-koen-1.3B-V1.0 이 번역모델을 DnD계열 게임데이터로 fine-tuning한 모델
+- QLoRA기법으로 fine-tunnig
+### (1) 훈련 정보
+- GPU: RTX3090 1대
+- Epoch: 3
+- learning-rate: 3e-4
+- batch_size: 1
+- Lora r: 8
+- Lora target modules: query_key_value  
+![loss그래프](./img/gugugo_for_DnD_v0.7.png)
+
+args=transformers.TrainingArguments(  
+        per_device_train_batch_size=1,  
+        gradient_accumulation_steps=1,  
+        fp16=True,  
+        output_dir="outputs",  
+        save_total_limit=5,  
+        logging_steps=300,  
+        report_to=["tensorboard"],  
+        num_train_epochs = 3,  
+        learning_rate=3e-4,  
+        resume_from_checkpoint=True,  
+        lr_scheduler_type= "cosine",  
+
+### (2) 출력 예시(PillarsOfEternityII, 스크립트로 평가)
+```
+### 영어: That's true, I won't lie. But I won't let you march towards Moonrise without knowing what you'd face.
+
+### 한글(Gugugo_for_DnD_V0.7): 사실이에요. 거짓말은 하지 않겠어요. 하지만 당신이 무엇을 마주할지 알지 못한 채로 문리사와 함께 문 앞으로 행진하게 두지는 않겠어요.
+
+### 한글(deepL): 사실이야, 거짓말은 하지 않을게. 하지만 어떤 일이 벌어질지 모른 채 문라이즈를 향해 행진하도록 내버려두지는 않을 겁니다.
+
+### 한글(유저번역): 그건 사실이야, 거짓을 말하진 않겠네. 하지만 그대가 뭘 맞이할지도 모르는 채로 문라이즈 타워로 나아가도록 놔둘 순 없지.
+```
+```
+### 영어: <i>A bold strategy. It is not many that can defeat their own minds.</i>
+
+### 한글(Gugugo_for_DnD_V0.7): <i>대단한 전략이군. 그들의 마음을 정복할 수 있는 자는 많지 않을 거야.</i>
+
+### 한글(deepL): <i>A bold strategy. It is not many that can defeat their own minds.</i>
+
+### 한글(유저번역):<i>대담한 전략이군요. 자신의 정신을 이겨낼 수 있는 이들은 많지 않은데 말이죠.</i>
+```
+
+```
+### 영어: If a spell forces you to make a Dexterity <LSTag Tooltip="SavingThrow">Saving Throw</LSTag>, you can use a reaction to shield yourself and diminish the effect\'s damage. <br><br>On a failed save, you only take half damage. On a successful save, you don\'t take any damage, even if you normally would.
+
+### 한글(Gugugo_for_DnD_V0.7): 만약 주문이 당신에게 민첩 <LSTag Toolip="SavingThrow"</LSTag> 내성 굴림="내성 굴림"을 주면, 당신은 반사를 사용하여 자신을 보호하고, 효과의 피해를 줄일 수 있다. 브라우저의 실패로 인해, 당신은 반사를 받지 않아도, 당신이 평소에는 그랬던 것처럼, 아무런 피해도 받지 않는다.
+
+### 한글(deepL): If a spell forces you to make a Dexterity <LSTag Tooltip="SavingThrow">Saving Throw</LSTag>, you can use a reaction to shield yourself and diminish the effect\'s damage. <br><br>On a failed save, you only take half damage. On a successful save, you don\'t take any damage, even if you normally would.
+
+### 한글(유저번역):주문이 민첩 <LSTag Tooltip="SavingThrow">내성 굴림</LSTag>을 강요하는 경우, 반응 행동을 사용해 스스로를 방어하고 효과의 피해를 감쇠할 수 있습니다. \n\n굴림에 실패한 경우, 절반의 피해만 입습니다. 굴림에 성공한 경우, 어떤 피해도 입지 않습니다.
+```
+```
+### 영어: After surviving a poor and bleak childhood, you know how to make the most out of very little. Using your street smarts bolsters your spirit for the journey ahead.
+
+### 한글(Gugugo_for_DnD_V0.7): 가난하고 어두운 어린 시절을 보낸 후에는, 얼마나 많은 것을 얻을 수 있는지 알고 있을 거요. 당신의 거리의 지혜를 이용하면 앞으로 나아갈 여정에 당신의 영혼을 불어넣을 수 있소.
+
+### 한글(deepL): 가난하고 암울한 어린 시절을 살아남은 여러분은 적은 것을 최대한 활용하는 방법을 알고 있습니다. 길거리에서 얻은 지혜를 활용하면 앞으로의 여정을 위한 정신력을 강화할 수 있습니다.
+
+### 한글(유저번역):가난하고 암울한 어린 시절을 생존해낸 당신은 가장 작은 것조차도 최대한 활용하는 방법을 알고 있습니다. 당신의 길거리 지식을 활용하면 앞으로의 여정을 위한 사기를 북돋울 수 있을 것입니다.
+```
+
 
 
 # Inform
