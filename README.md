@@ -8,10 +8,13 @@
 - polyglot-ko-5.8b를 장문번역 한영 데이터베이스 squarelike/sharegpt_deepl_ko_translation로 fine-tuning 완료(결과 좋지 않음)
 - "squarelike/Gugugo-koen-1.3B-V1.0"에 발더스게이트2 영한 번역 dialog로 fine-tuning 완료(Gugugo_for_DnD_V0.6)
 - PoE2 번역 데이터 확보 완료, 데이터에셋에 추가 완료
+- "squarelike/Gugugo-koen-1.3B-V1.0"에 발더스게이트2, POE2 영한 번역 dialog로 fine-tuning(Gugugo_for_DnD_V0.7)
+- 번역질이 더 좋다는 발더스 게이트1 영한 dialog 확보
+- 발더스 게이트3 유저번역 영한 dialog 확보(8월 17일자 패치)
 
 ## 2. Now
-- 번역질이 더 좋다는 발더스 게이트1 영한 dialog 수배중
-- "squarelike/Gugugo-koen-1.3B-V1.0"에 발더스게이트2 영한 번역 dialog로 fine-tuning
+- "squarelike/Gugugo-koen-1.3B-V1.0"에 발더스게이트2, POE2, 발더스게이트1, 발더스게이트3 유저번역 영한 번역 dialog로 fine-tuning 중
+
 
 ## 3. Future work
 - llama 시리즈로 영한 번역이 가능한지 확인
@@ -22,7 +25,7 @@
     - 일단 데이터 베이스는 [[link](https://huggingface.co/datasets/squarelike/sharegpt_deepl_ko_translation)]
 - 3. 기 번역된 dnd 게임에서 영어text와 한글 text 추출 // Done
 - 4. 추출된 데이터로 영한번역기로 훈련된 모델 fine-tuning // ing
-- 5. 번역되지 않은 dnd 게임의 script 번역 시도
+- 5. 번역되지 않은 dnd 게임의 script 번역 시도 // ing
 
 ## 5. Model_1: aeolian83/poly-ko-1.3b-translate
 - EleutherAI/polyglot-ko-1.3b을 squarelike/sharegpt_deepl_ko_translation으로 영한 번역만 가능하도록 fine-tuning한 모델
