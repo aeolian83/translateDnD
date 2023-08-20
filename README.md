@@ -82,18 +82,18 @@
 - Lora target modules: query_key_value  
 ![loss그래프](./img/gugugo_for_DnD_v0.6.png)
 
-args=transformers.TrainingArguments(
-        per_device_train_batch_size=1,
-        gradient_accumulation_steps=1,
-        fp16=True,
-        output_dir="outputs",
-        save_total_limit=5,
-        logging_steps=300,
-        report_to=["tensorboard"],
-        num_train_epochs = 3,
-        learning_rate=3e-4,
-        resume_from_checkpoint=True,
-        lr_scheduler_type= "cosine",
+args=transformers.TrainingArguments(  
+        per_device_train_batch_size=1,  
+        gradient_accumulation_steps=1,  
+        fp16=True,  
+        output_dir="outputs",  
+        save_total_limit=5,  
+        logging_steps=300,  
+        report_to=["tensorboard"],  
+        num_train_epochs = 3,  
+        learning_rate=3e-4,  
+        resume_from_checkpoint=True,  
+        lr_scheduler_type= "cosine",  
 
 ### (2) 출력 예시(PillarsOfEternityII, 스크립트로 평가)
 ```
@@ -126,7 +126,7 @@ args=transformers.TrainingArguments(
 ### 한글(공식번역): <b>후마이리</b>는 내게 결투장 밑의 <b>신전 서쪽</b>에 있는 <b>기억의 전당</b>으로 와 자신과 얘기를 나누라고 했다.
 ```
 
-## 8. Model_3: aeolian83/Gugugo_for_DnD_v0.7
+## 8. Model_4: aeolian83/Gugugo_for_DnD_v0.7
 - squarelike/Gugugo-koen-1.3B-V1.0 이 번역모델을 DnD계열 게임데이터로 fine-tuning한 모델
 - QLoRA기법으로 fine-tunnig
 ### (1) 훈련 정보
