@@ -151,7 +151,7 @@ args=transformers.TrainingArguments(
         resume_from_checkpoint=True,  
         lr_scheduler_type= "cosine",  
 
-### (2) 출력 예시(PillarsOfEternityII, 스크립트로 평가)
+### (2) 출력 예시(Baldur's Gate3, 스크립트로 평가)
 ```
 ### 영어: That's true, I won't lie. But I won't let you march towards Moonrise without knowing what you'd face.
 
@@ -189,6 +189,62 @@ args=transformers.TrainingArguments(
 
 ### 한글(유저번역):가난하고 암울한 어린 시절을 생존해낸 당신은 가장 작은 것조차도 최대한 활용하는 방법을 알고 있습니다. 당신의 길거리 지식을 활용하면 앞으로의 여정을 위한 사기를 북돋울 수 있을 것입니다.
 ```
+
+## 9. Model_5: aeolian83/Gugugo_for_DnD_v0.8
+- squarelike/Gugugo-koen-1.3B-V1.0 이 번역모델을 DnD계열 게임데이터로 fine-tuning한 모델
+- QLoRA기법으로 fine-tunnig
+### (1) 훈련 정보
+- GPU: RTX3090 1대
+- Epoch: 3
+- learning-rate: 3e-4
+- batch_size: 1
+- Lora r: 8
+- Lora target modules: query_key_value  
+![loss그래프](./img/gugugo_for_DnD_v0.8.png)
+
+### (2) 출력 예시(Baldur's Gate3, 스크립트로 평가, 훈련데이터로 들어가지 않은 데이터 중에서 새로 번역된 유저번역과 비교)
+```
+### 영어: They are <i>gifts</i> to my Queen from the goddess Tiamat herself. They reside in the great city of Tu'narath, awaiting the privilege of battle.
+
+### 한글(Gugugo_for_DnD_V0.8): 여신 티아마트의 <i>선물</i>이 내 여왕님께 가 있다. 그들은 여신 티아마트의 위대한 도시에서 살고 있다. 전투의 특권을 기다리며.
+
+### 한글(deepL): 사실이야, 거짓말은 하지 않을게. 하지만 어떤 일이 벌어질지 모른 채 문라이즈를 향해 행진하도록 내버려두지는 않을 겁니다.
+
+### 한글(유저번역): 드래곤들은 티아마트 여신께서 직접 우리 여왕에게 주신 <i>선물</i>이지. 그들은 위대한 도시 투나라스에 머물며, 전투의 특권을 기다리는 중이다.
+```
+
+```
+### 영어: <LSTag Type="Image" Info="SoftWarning"/> Can't be summoned again if killed in combat.
+
+### 한글(Gugugo_for_DnD_V0.8): <LSTag Type="Image" Info="SoftWarning"/> 전투 중에 죽으면 다시 소환할 수 없습니다.
+
+### 한글(유저번역): 전투에서 죽으면 다시 소환할 수 없습니다. 
+```
+
+```
+### 영어: You can't try to charm the creature again until your next <LSTag Tooltip="LongRest">Long Rest</LSTag>.
+
+### 한글(Gugugo_for_DnD_V0.8): 다음 <LSTag Tooltip="LongRest">긴 휴식</LSTag>이 될 때까지는, 크리쳐를 현혹하려 하지 마십시오.
+
+### 한글(유저번역): <LSTag Tooltip="LongRest">긴 휴식</LSTag> 전에는 크리처를 매혹할 수 없습니다. 
+```
+
+```
+### 영어: *Humming.*
+
+### 한글(Gugugo_for_DnD_V0.8): *웅웅.*
+
+### 한글(유저번역): *흥얼거린다.*
+```
+
+```
+### 영어: Despite no ancestral links to the mighty creatures, these dragonborn share the glinting shine and scorching cold breath of silver dragons.
+
+### 한글(Gugugo_for_DnD_V0.8): 강력한 생물들과 조상이 연결되어 있지 않음에도 불구하고, 이 드래곤본은 빛나는 빛을 내뿜으며 실버 드래곤의 냉기를 뿜어냅니다.
+
+### 한글(유저번역): 실버 드래곤의 후손은 아니지만, 이 드래곤본들은 그 위대한 생물과 같은 번뜩이는 광택과 맹렬하고도 차가운 숨결을 가지고 있습니다.
+```
+
 
 
 
